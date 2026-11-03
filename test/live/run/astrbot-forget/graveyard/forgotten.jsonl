@@ -1,0 +1,2 @@
+{"id": "m5_45_ud8azbue", "layer": "DL1", "channel": "dialog", "text": "很久以前的流水账0", "importance": 0.5, "created_local": "2026-08-04 21:33:11", "forgotten_local": "2026-11-02 21:33:11", "lifespan_days": 90, "retention": 0.001, "reason": "遗忘"}
+{"id": "m5_46_ud8ad23x", "layer": "DL1", "channel": "dialog", "text": "很久以前的流水账1", "importance": 0.5, "created_local": "2026-08-04 21:33:11", "forgotten_local": "2026-11-02 21:33:11", "lifespan_days": 90, "retention": 0.001, "reason": "遗忘"}

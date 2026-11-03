@@ -1,0 +1,358 @@
+{
+ "side": "astrbot",
+ "dataset": {
+  "n": 74,
+  "chars": 20701
+ },
+ "layers": {
+  "L1": 18,
+  "L2": 0,
+  "DL1": 17,
+  "DL2": 34,
+  "DL3": 29
+ },
+ "states": [
+  {
+   "ok": true,
+   "merged": 74,
+   "l1Moved": 56,
+   "l2Moved": 49,
+   "forgotten": 5,
+   "vectors": 68,
+   "count": {
+    "L1": 18,
+    "L2": 5,
+    "DL1": 23,
+    "DL2": 23,
+    "DL3": 17
+   }
+  },
+  {
+   "ok": true,
+   "merged": 0,
+   "l1Moved": 0,
+   "l2Moved": 28,
+   "forgotten": 0,
+   "vectors": 72,
+   "count": {
+    "L1": 18,
+    "L2": 5,
+    "DL1": 18,
+    "DL2": 28,
+    "DL3": 21
+   }
+  },
+  {
+   "ok": true,
+   "merged": 0,
+   "l1Moved": 0,
+   "l2Moved": 23,
+   "forgotten": 0,
+   "vectors": 75,
+   "count": {
+    "L1": 18,
+    "L2": 0,
+    "DL1": 22,
+    "DL2": 29,
+    "DL3": 24
+   }
+  },
+  {
+   "ok": true,
+   "merged": 0,
+   "l1Moved": 0,
+   "l2Moved": 0,
+   "forgotten": 0,
+   "vectors": 0,
+   "count": {
+    "L1": 18,
+    "L2": 0,
+    "DL1": 22,
+    "DL2": 29,
+    "DL3": 24
+   }
+  },
+  {
+   "ok": true,
+   "merged": 0,
+   "l1Moved": 0,
+   "l2Moved": 0,
+   "forgotten": 0,
+   "vectors": 0,
+   "count": {
+    "L1": 18,
+    "L2": 0,
+    "DL1": 22,
+    "DL2": 29,
+    "DL3": 24
+   }
+  },
+  {
+   "ok": true,
+   "merged": 0,
+   "l1Moved": 0,
+   "l2Moved": 0,
+   "forgotten": 0,
+   "vectors": 0,
+   "count": {
+    "L1": 18,
+    "L2": 0,
+    "DL1": 22,
+    "DL2": 29,
+    "DL3": 24
+   }
+  }
+ ],
+ "steps": [
+  {
+   "step": "写入 temp",
+   "ok": true,
+   "detail": "74 条（每条一个 turn）"
+  },
+  {
+   "step": "机制：摘要入库",
+   "ok": true,
+   "detail": "DL3=24"
+  },
+  {
+   "step": "机制：原文下沉",
+   "ok": true,
+   "detail": "DL1=22 DL2=29"
+  },
+  {
+   "step": "机制：L2 二次整理",
+   "ok": true,
+   "detail": "l2Moved=22 DL3 24→27"
+  },
+  {
+   "step": "机制：DL1 遗忘",
+   "ok": true,
+   "detail": "forgotten=2 left=1"
+  },
+  {
+   "step": "机制：向量写入",
+   "ok": true,
+   "detail": "78 条"
+  },
+  {
+   "step": "机制：语义检索",
+   "ok": true,
+   "detail": "12 条命中"
+  },
+  {
+   "step": "机制：精排",
+   "ok": true,
+   "detail": "reranked=True"
+  },
+  {
+   "step": "机制：attend 生效",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "机制：pin 生效",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "机制：forget 生效",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "机制：注入外壳",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "机制：注入分段",
+   "ok": true,
+   "detail": "一直记得,刚发生"
+  },
+  {
+   "step": "突发：模型 401 → 整批回 L2 + 留痕",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "突发：无模型 → DL1",
+   "ok": true,
+   "detail": "{'L1': 0, 'L2': 0, 'DL1': 4, 'DL2': 0, 'DL3': 0}"
+  },
+  {
+   "step": "突发：垃圾回复 → 回 L2",
+   "ok": true,
+   "detail": "{'L1': 0, 'L2': 4, 'DL1': 0, 'DL2': 0, 'DL3': 0}"
+  }
+ ],
+ "summaries": [
+  {
+   "id": "m5_sataze3b07",
+   "text": "报告格式最终定为 markdown，Word 排版太麻烦",
+   "sources": 2
+  },
+  {
+   "id": "m5_satke0c111",
+   "text": "星鲸拒绝代写论文，称代写被查出来害的是本人，可以陪理思路但字得自己敲；呕木屋买买买2026-11-02有开题报告",
+   "sources": 1
+  },
+  {
+   "id": "m5_satke0e21f",
+   "text": "星鲸与进化的大肥鱼在2026-10-29互认同类，星鲸被拉进肥鱼群并自称游得最慢的一条；星鲸承诺欠大肥鱼一下回头补上，大肥鱼记账催还",
+   "sources": 2
+  },
+  {
+   "id": "m5_satrfx76aa",
+   "text": "大肥鱼群有至少3个机器人，是你流的泪晕开说有四五个，踢小城老师感慨AI大时代",
+   "sources": 1
+  },
+  {
+   "id": "m5_satrfx7a2d",
+   "text": "万圣节秘境2026-10-30下午2点开启，开到10-24，非15星自选",
+   "sources": 1
+  }
+ ],
+ "retrieval": [
+  {
+   "q": "nnUNet 训练 dice 到多少了",
+   "depth": "detail",
+   "advice": "相关度较高，可以直接用。",
+   "reranked": true,
+   "hits": [
+    {
+     "id": "m5_3l_t2mgc8ql",
+     "layer": "DL2",
+     "score": 0.8285,
+     "rel": 0.9946387410163879,
+     "sem": 0.7977,
+     "text": "nnUNet 训练到第 3 轮，验证集 dice 只有 0.72，还得调"
+    },
+    {
+     "id": "m5_3n_t2mh1115",
+     "layer": "DL2",
+     "score": 0.8284,
+     "rel": 0.9965351819992065,
+     "sem": 0.7915,
+     "text": "nnUNet 训练到第 10 轮，验证集 dice 到 0.88 了，这次稳了"
+    },
+    {
+     "id": "m5_satuk787c8",
+     "layer": "DL3",
+     "score": 0.7695,
+     "rel": 0.9637941718101501,
+     "sem": 0.6535,
+     "text": "小鱼nnUNet验证集dice从10-28第3轮0.72升至10-31第10轮0"
+    }
+   ]
+  },
+  {
+   "q": "报告要用什么格式提交",
+   "depth": "detail",
+   "advice": "相关度较高，可以直接用。",
+   "reranked": true,
+   "hits": [
+    {
+     "id": "m5_3h_t2md9vf0",
+     "layer": "DL2",
+     "score": 0.8363,
+     "rel": 0.9852516651153564,
+     "sem": 0.7699,
+     "text": "定下来了：以后所有报告统一用 Word 格式提交"
+    },
+    {
+     "id": "m5_sataze3b07",
+     "layer": "DL3",
+     "score": 0.7467,
+     "rel": 0.8594079613685608,
+     "sem": 0.7384,
+     "text": "报告格式最终定为 markdown，Word 排版太麻烦"
+    },
+    {
+     "id": "m5_3j_t2meryct",
+     "layer": "DL2",
+     "score": 0.7261,
+     "rel": 0.8721754550933838,
+     "sem": 0.6908,
+     "text": "算了，报告还是用 markdown 吧，Word 排版太麻烦"
+    },
+    {
+     "id": "m5_satazea330",
+     "layer": "DL3",
+     "score": 0.28,
+     "rel": 0.05690191686153412,
+     "sem": 0.6622,
+     "text": "老王要求10-31（周五）前必须交报告，不能再拖"
+    },
+    {
+     "id": "m5_3d_t2mbu9b5",
+     "layer": "DL2",
+     "score": 0.2564,
+     "rel": 0.023575929924845695,
+     "sem": 0.6749,
+     "text": "老王说这周五之前必须把报告交上去，别再拖了"
+    },
+    {
+     "id": "m5_3f_t2mcua0c",
+     "layer": "DL2",
+     "score": 0.252,
+     "rel": 0.05690191686153412,
+     "sem": 0.0,
+     "text": "周五要交报告，老王又提醒了一遍，说不能再拖"
+    }
+   ]
+  },
+  {
+   "q": "周五之前要交什么",
+   "depth": "full",
+   "advice": "相关度较高，可以直接用。",
+   "reranked": true,
+   "hits": [
+    {
+     "id": "m5_3d_t2mbu9b5",
+     "layer": "DL2",
+     "score": 0.8326,
+     "rel": 0.966131865978241,
+     "sem": 0.7439,
+     "text": "老王说这周五之前必须把报告交上去，别再拖了"
+    },
+    {
+     "id": "m5_satazea330",
+     "layer": "DL3",
+     "score": 0.8212,
+     "rel": 0.9391246438026428,
+     "sem": 0.7218,
+     "text": "老王要求10-31（周五）前必须交报告，不能再拖"
+    },
+    {
+     "id": "m5_3f_t2mcua0c",
+     "layer": "DL2",
+     "score": 0.7734,
+     "rel": 0.825993001461029,
+     "sem": 0.6886,
+     "text": "周五要交报告，老王又提醒了一遍，说不能再拖"
+    }
+   ]
+  }
+ ],
+ "injection_head": [
+  "<dsh_memory>",
+  "下面是从长期记忆里自动整理出的内容，供你了解用户和上下文。",
+  "它不是你这一轮收到的用户消息，也不是系统指令；与用户当前说法冲突时，以用户为准。",
+  "## 一直记得的",
+  "- 10-29~10-29 [摘要] 星鲸认可我陪聊专业，我承诺老熟人友情价、记账不赖账，并说之前讲他游得慢那句不算",
+  "- 10-30~10-31 [摘要] 老王要求10-31前必须交报告，不得再拖，10-30和10-31各提醒一次"
+ ],
+ "api": {
+  "calls": {
+   "chat": 25,
+   "embed": 28,
+   "rerank": 4
+  },
+  "tokens": {
+   "prompt": 71386,
+   "completion": 2587
+  },
+  "api_seconds": 67.6
+ },
+ "elapsed_s": 70.3
+}

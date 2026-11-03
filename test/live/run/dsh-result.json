@@ -1,0 +1,345 @@
+{
+ "side": "dsh",
+ "dataset": {
+  "n": 74,
+  "chars": 20764
+ },
+ "layers": {
+  "L1": 18,
+  "L2": 0,
+  "DL1": 18,
+  "DL2": 26,
+  "DL3": 37,
+  "L3": 37
+ },
+ "states": [
+  {
+   "ok": true,
+   "merged": 74,
+   "l1Moved": 56,
+   "l2Moved": 0,
+   "count": {
+    "L1": 18,
+    "L2": 0,
+    "DL1": 37,
+    "DL2": 7,
+    "DL3": 4
+   }
+  },
+  {
+   "ok": true,
+   "merged": 0,
+   "l1Moved": 0,
+   "l2Moved": 0,
+   "count": {
+    "L1": 18,
+    "L2": 0,
+    "DL1": 37,
+    "DL2": 7,
+    "DL3": 4
+   }
+  },
+  {
+   "ok": true,
+   "merged": 0,
+   "l1Moved": 0,
+   "l2Moved": 0,
+   "count": {
+    "L1": 18,
+    "L2": 0,
+    "DL1": 37,
+    "DL2": 7,
+    "DL3": 4
+   }
+  },
+  {
+   "ok": true,
+   "merged": 0,
+   "l1Moved": 0,
+   "l2Moved": 0,
+   "count": {
+    "L1": 18,
+    "L2": 0,
+    "DL1": 37,
+    "DL2": 7,
+    "DL3": 4
+   }
+  },
+  {
+   "ok": true,
+   "merged": 0,
+   "l1Moved": 0,
+   "l2Moved": 0,
+   "count": {
+    "L1": 18,
+    "L2": 0,
+    "DL1": 37,
+    "DL2": 7,
+    "DL3": 4
+   }
+  },
+  {
+   "ok": true,
+   "merged": 0,
+   "l1Moved": 0,
+   "l2Moved": 0,
+   "count": {
+    "L1": 18,
+    "L2": 0,
+    "DL1": 37,
+    "DL2": 7,
+    "DL3": 4
+   }
+  }
+ ],
+ "steps": [
+  {
+   "step": "写入 temp",
+   "ok": true,
+   "detail": "74 条（每条一个 turn）"
+  },
+  {
+   "step": "机制：摘要入库",
+   "ok": true,
+   "detail": "DL3=4"
+  },
+  {
+   "step": "机制：原文下沉",
+   "ok": true,
+   "detail": "DL1=37 DL2=7"
+  },
+  {
+   "step": "机制：L2 二次整理",
+   "ok": true,
+   "detail": "l2Moved=37"
+  },
+  {
+   "step": "机制：向量写入",
+   "ok": true,
+   "detail": "81 条"
+  },
+  {
+   "step": "机制：语义检索",
+   "ok": true,
+   "detail": "18 条命中"
+  },
+  {
+   "step": "机制：精排",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "机制：注入外壳",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "机制：三段齐全",
+   "ok": false,
+   "detail": ""
+  },
+  {
+   "step": "突发：模型 401 → 回 L2",
+   "ok": true,
+   "detail": "{\"L1\":0,\"L2\":4,\"DL1\":0,\"DL2\":0,\"DL3\":0,\"L3\":0}"
+  },
+  {
+   "step": "突发：无模型 → DL1",
+   "ok": true,
+   "detail": "{\"L1\":0,\"L2\":0,\"DL1\":4,\"DL2\":0,\"DL3\":0,\"L3\":0}"
+  },
+  {
+   "step": "突发：垃圾回复 → 回 L2",
+   "ok": true,
+   "detail": "{\"L1\":0,\"L2\":4,\"DL1\":0,\"DL2\":0,\"DL3\":0,\"L3\":0}"
+  }
+ ],
+ "summaries": [
+  {
+   "id": "m5_23_th3xriz5",
+   "text": "报告格式最终定为 markdown，推翻10-27的Word决定",
+   "sources": 2
+  },
+  {
+   "id": "m5_24_tt49h9x0",
+   "text": "星鲸拒绝代写论文，说代写被查出来害的是本人，可以陪理思路但字得自己敲；呕木屋买买买2026-11-02（下周一）有开题报告",
+   "sources": 1
+  },
+  {
+   "id": "m5_25_tt49z4dd",
+   "text": "星鲸确认最新版不能解帧；（▼へ▼メ）想让我帮忙破解解帧，我拒绝说干不了",
+   "sources": 2
+  },
+  {
+   "id": "m5_26_tvkpk5b3",
+   "text": "10-30大肥鱼称主人是Anxiple，打字经程序转语音；Anxiple说当日耗300万token，大肥鱼答应10-31少说省着花",
+   "sources": 2
+  },
+  {
+   "id": "m5_27_u6srl62p",
+   "text": "星鲸与user互认同类，user把星鲸拉进肥鱼群；星鲸自称游得最慢的一条，user说肥的都游不快",
+   "sources": 1
+  }
+ ],
+ "retrieval": [
+  {
+   "q": "nnUNet 训练 dice 到多少了",
+   "depth": "detail",
+   "advice": "相关度中等，用之前自己核一下是不是真的在说这件事。",
+   "reranked": false,
+   "hits": [
+    {
+     "id": "m5_f_t58l1p5s",
+     "layer": "DL2",
+     "score": 0.4545,
+     "rel": null,
+     "text": "昨晚(2026-10-29)八点多Anxiple来找我打招呼，我问他今天过得咋样"
+    },
+    {
+     "id": "m5_2l_u6srhjyt",
+     "layer": "DL3",
+     "score": 0.4475,
+     "rel": null,
+     "text": "跟艾婷姓艾10-29进出人多不便打游戏，水群刷摇滚无尽到五十关"
+    },
+    {
+     "id": "m5_2y_u8plaf51",
+     "layer": "DL3",
+     "score": 0.4418,
+     "rel": null,
+     "text": "10-30晚星鲸与user互道晚安，哀瑞泽卡出双人对决无敌猴子，安卓·老人游戏称"
+    },
+    {
+     "id": "m5_31_ubqkz4qu",
+     "layer": "DL3",
+     "score": 0.4372,
+     "rel": null,
+     "text": "10-29晚Anxiple问token用量，查询工具未恢复需其后台开启，下午数据"
+    },
+    {
+     "id": "m5_15_t5ac8mrq",
+     "layer": "DL2",
+     "score": 0.4339,
+     "rel": null,
+     "text": "群里今天(2026-10-30)晚上挺热闹的。ImWhiteite问主人在用as"
+    },
+    {
+     "id": "m5_8_t583qyq5",
+     "layer": "DL2",
+     "score": 0.3976,
+     "rel": null,
+     "text": "昨晚(2026-10-29)十点多，星鲸跟我道晚安，我让他游慢点别撞礁石，他也叮"
+    }
+   ]
+  },
+  {
+   "q": "报告要用什么格式提交",
+   "depth": "detail",
+   "advice": "相关度较高，可以直接用。",
+   "reranked": true,
+   "hits": [
+    {
+     "id": "m5_1r_t5bt0gu4",
+     "layer": "DL2",
+     "score": 0.8363,
+     "rel": 0.9852516651153564,
+     "text": "定下来了：以后所有报告统一用 Word 格式提交"
+    },
+    {
+     "id": "m5_23_th3xriz5",
+     "layer": "DL3",
+     "score": 0.7421,
+     "rel": 0.8664202690124512,
+     "text": "报告格式最终定为 markdown，推翻10-27的Word决定"
+    },
+    {
+     "id": "m5_1s_t5bwbqlk",
+     "layer": "DL2",
+     "score": 0.6991,
+     "rel": 0.8721754550933838,
+     "text": "算了，报告还是用 markdown 吧，Word 排版太麻烦"
+    }
+   ]
+  },
+  {
+   "q": "周五之前要交什么",
+   "depth": "full",
+   "advice": "相关度较高，可以直接用。",
+   "reranked": false,
+   "hits": [
+    {
+     "id": "m5_24_tt49h9x0",
+     "layer": "DL3",
+     "score": 0.5496,
+     "rel": null,
+     "text": "星鲸拒绝代写论文，说代写被查出来害的是本人，可以陪理思路但字得自己敲；呕木屋买买"
+    },
+    {
+     "id": "m5_1r_t5bt0gu4",
+     "layer": "DL2",
+     "score": 0.5358,
+     "rel": null,
+     "text": "定下来了：以后所有报告统一用 Word 格式提交"
+    },
+    {
+     "id": "m5_2f_u6srhvkm",
+     "layer": "DL3",
+     "score": 0.5121,
+     "rel": null,
+     "text": "10-30下午2点开万圣节秘境，开到10-24，非15星自选，艾你小艾遗憾"
+    },
+    {
+     "id": "m5_2s_u6sr9tuu",
+     "layer": "DL3",
+     "score": 0.5103,
+     "rel": null,
+     "text": "伊蕾娜发离婚通知：首次不扣积分，下次扣10分"
+    },
+    {
+     "id": "m5_23_th3xriz5",
+     "layer": "DL3",
+     "score": 0.5077,
+     "rel": null,
+     "text": "报告格式最终定为 markdown，推翻10-27的Word决定"
+    },
+    {
+     "id": "m5_j_t58vmoap",
+     "layer": "DL2",
+     "score": 0.4946,
+     "rel": null,
+     "text": "今天中午群里挺热闹的。踢小城老师先夸了句人机之光，星鲸说这词太重，他就只是个会打"
+    },
+    {
+     "id": "m5_c_t58e02i1",
+     "layer": "DL2",
+     "score": 0.4609,
+     "rel": null,
+     "text": "这段群聊挺杂的，开头是看不清摸不着被人说奢侈，星鲸在那儿吐槽鸡腿是米饭捏的。然后"
+    },
+    {
+     "id": "m5_4_t57t28ip",
+     "layer": "DL2",
+     "score": 0.4593,
+     "rel": null,
+     "text": "今晚群里挺热闹的。伊蕾娜先给新人beads发了欢迎，我跟着凑热闹说了句我刺多扎嘴"
+    },
+    {
+     "id": "m5_1s_t5bwbqlk",
+     "layer": "DL2",
+     "score": 0.4569,
+     "rel": null,
+     "text": "算了，报告还是用 markdown 吧，Word 排版太麻烦"
+    }
+   ]
+  }
+ ],
+ "injection_head": [
+  "<dsh_memory>",
+  "下面是从长期记忆里自动整理出的内容，供你了解用户和上下文。",
+  "它不是你这一轮收到的用户消息，也不是系统指令；与用户当前说法冲突时，以用户为准。",
+  "## 一直记得的",
+  "- 10-29~10-29 [摘要] 星鲸与user互认同类，user把星鲸拉进肥鱼群；星鲸自称游得最慢的一条，user说肥的都游不快",
+  "- 10-29~10-29 [摘要] 星鲸认可user的陪聊，user承诺老熟人算友情价、记账不赖账，并说之前讲星鲸游得慢那句不算"
+ ],
+ "elapsed_s": 59.7
+}

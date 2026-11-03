@@ -1,0 +1,26 @@
+{
+ "at": 1793626400435,
+ "writer": "astrbot",
+ "elapsedMs": 241,
+ "merged": 4,
+ "signals": 0,
+ "l1Moved": 4,
+ "l2Moved": 0,
+ "forgotten": 0,
+ "vectors": 0,
+ "l3": 0,
+ "count": {
+  "L1": 0,
+  "L2": 4,
+  "DL1": 0,
+  "DL2": 0,
+  "DL3": 0
+ },
+ "chars": {
+  "L1": 0,
+  "L2": 1339,
+  "DL1": 0,
+  "DL2": 0,
+  "DL3": 0
+ }
+}

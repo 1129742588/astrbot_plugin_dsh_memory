@@ -1,0 +1,11 @@
+name: astrbot_plugin_dsh_memory
+display_name: 记忆分层
+desc: 把每一轮对话记下来，定期整理成摘要、按热度遗忘，再把该记的拼进上下文。和 dsh 的 memory-tiers 是同一套协议的两端实现，指向同一个数据目录即可共用一份记忆。
+short_desc: 五层记忆，聊再久也不多花钱
+help: 数据目录留空 = 独立记忆库，填 dsh 的目录 = 两端共用；/memory 看状态，/memory help 看全部子命令；配置页分六组，默认值可直接用。
+version: 0.8.2
+author: "1129742588"
+repo: https://github.com/1129742588/astrbot_plugin_dsh_memory
+astrbot_version: ">=4.0.0"
+support_platforms:
+  - aiocqhttp

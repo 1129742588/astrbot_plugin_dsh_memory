@@ -1,0 +1,285 @@
+{
+  "basic": {
+    "description": "基础",
+    "type": "object",
+    "hint": "数据目录与写入端名字。两端指向同一个目录 = 共用一份记忆。",
+    "items": {
+      "dir": {
+        "description": "数据目录",
+        "type": "string",
+        "hint": "留空 = 用插件自己的目录（data/plugin_data/astrbot_plugin_dsh_memory/memory），从零初始化一份独立记忆库，和 dsh 互不相干。填 dsh 的目录（例如 C:\\Users\\你\\.dsh\\storages\\memory-v5）= 两端共享同一份记忆。目录不存在会自动新建；docker 部署时这里填容器内路径，需要把宿主目录挂进来。",
+        "default": ""
+      },
+      "writer": {
+        "description": "写入端名字",
+        "type": "string",
+        "hint": "只能是 [A-Za-z0-9_-]。决定自己的 temp 文件名 L1.tmp/<writer>.jsonl，以及注入时的来源标记。必须和 dsh 的 writer（dsh）不同，否则两端会写同一个 temp 抢行。",
+        "default": "astrbot"
+      }
+    }
+  },
+  "inject": {
+    "description": "注入",
+    "type": "object",
+    "hint": "把共享记忆拼进上下文：L3 一直记得的 → L2 最近沉淀的 → L1 刚发生的 → 相关的旧事。",
+    "items": {
+      "inject": {
+        "description": "注入共享记忆",
+        "type": "bool",
+        "hint": "关掉后只写不读，适合先验证写入是否正常。",
+        "default": true
+      },
+      "inject_target": {
+        "description": "注入位置",
+        "type": "string",
+        "options": [
+          "system_prompt",
+          "extra_user_part",
+          "contexts_user"
+        ],
+        "hint": "system_prompt（默认）= 拼到系统提示词尾部，顺序是「系统提示 + 工具/技能 + 人格 + 记忆 + 对话」。记忆块每轮都变，后面无法命中前缀缓存；好处是模型先看背景再看问题。extra_user_part = 挂在「本轮用户消息」之后，历史前缀完全不变，前缀缓存命中率最高；代价是记忆出现在问题后面。两者都不会写进会话历史（都标了临时）。contexts_user = 往历史末尾插一条 user 消息，一般不用。",
+        "default": "system_prompt"
+      },
+      "context_keep": {
+        "description": "对话历史截断",
+        "type": "int",
+        "hint": "0（默认）= 全清：只留开头的 system 消息，历史全部丢掉——记忆系统已经存了原话，再留一份是重复。-1 = 不动（保留 astrbot 原样）；N>0 = 只留最近 N 轮。要么全清、要么不动：keep=N 时窗口每轮滑动，前缀反而不稳定。",
+        "default": 0,
+        "slider": {
+          "min": -1,
+          "max": 50,
+          "step": 1
+        }
+      },
+      "hot_max_chars": {
+        "description": "「刚发生的」容量（字）",
+        "type": "int",
+        "hint": "L1 视图的注入上限，和 dsh 的 hotMaxChars 对齐（默认 3000）。这是注入上限，不是整理阈值。",
+        "default": 3000,
+        "slider": {
+          "min": 500,
+          "max": 8000,
+          "step": 100
+        }
+      },
+      "hot_quota_own": {
+        "description": "自己那一端的配额",
+        "type": "float",
+        "hint": "0~1。先紧着自己（本端写的）占这么多，剩下的给另一端。两端用同一规则，各自的注入块才不会来回跳。默认 0.7。",
+        "default": 0.7,
+        "slider": {
+          "min": 0,
+          "max": 1,
+          "step": 0.05
+        }
+      },
+      "long_max_chars": {
+        "description": "「一直记得的」容量（字）",
+        "type": "int",
+        "hint": "读 L3.json（长期摘要快照）拼进上下文的上限，对齐 dsh 的 longMaxChars（默认 3000）。0 或空按 3000。",
+        "default": 3000,
+        "slider": {
+          "min": 500,
+          "max": 8000,
+          "step": 100
+        }
+      },
+      "consolidate_max_chars": {
+        "description": "「最近沉淀的」容量（字）",
+        "type": "int",
+        "hint": "读 L2.json（刚沉淀下来的原话）拼进上下文的上限，对齐 dsh 的 consolidateMaxChars（默认 2500）。已经沉到 L2 的条目不会在「刚发生的」里重复出现。",
+        "default": 2500,
+        "slider": {
+          "min": 500,
+          "max": 8000,
+          "step": 100
+        }
+      }
+    }
+  },
+  "capture": {
+    "description": "抓取",
+    "type": "object",
+    "hint": "一轮 = 一条用户消息 + 机器人回复，共用一个 turnId。只追加自己的 temp，不重写、不碰别人的文件。",
+    "items": {
+      "capture": {
+        "description": "记录每一轮",
+        "type": "bool",
+        "hint": "关掉后 L1.tmp/<writer>.jsonl 不再增长，另一端就看不到本端说的话。",
+        "default": true
+      },
+      "capture_user_chars": {
+        "description": "用户消息截断（字）",
+        "type": "int",
+        "hint": "0 = 不截断。默认 2000。",
+        "default": 2000,
+        "slider": {
+          "min": 0,
+          "max": 8000,
+          "step": 100
+        }
+      },
+      "capture_bot_chars": {
+        "description": "机器人回复截断（字）",
+        "type": "int",
+        "hint": "和 dsh 的 botCaptureChars 对齐（默认 400）。0 = 不截断。",
+        "default": 400,
+        "slider": {
+          "min": 0,
+          "max": 4000,
+          "step": 50
+        }
+      },
+      "skip_commands": {
+        "description": "不记指令消息",
+        "type": "bool",
+        "hint": "以 / 开头的消息（/memory、/reset 之类）不算对话，不写进记忆。",
+        "default": true
+      }
+    }
+  },
+  "organize": {
+    "description": "整理",
+    "type": "object",
+    "hint": "自己拿 organize.lock 整理：合并 temp、把 L1 压成 L2、摘要进 L3、遗忘流水账。另一端同时在线也没关系，靠锁互斥，谁拿到谁整理。",
+    "items": {
+      "organize": {
+        "description": "自己整理",
+        "type": "bool",
+        "hint": "关掉就只抓取 + 注入，整理全交给另一端。打开后另一端不在线也能沉淀。",
+        "default": true
+      },
+      "organize_every_min": {
+        "description": "整理间隔（分钟）",
+        "type": "int",
+        "hint": "定时补漏，和「每轮结束尝试一次」配合。太勤会白跑（没到容量就不动）。默认 5。",
+        "default": 5,
+        "slider": {
+          "min": 1,
+          "max": 120,
+          "step": 1
+        }
+      },
+      "quiet_min": {
+        "description": "只整理安静多久的轮次（分钟）",
+        "type": "int",
+        "hint": "避免聊到一半被摘要腰斩。默认 10：只把 10 分钟以前、已经安静下来的轮次拿去压缩。",
+        "default": 10,
+        "slider": {
+          "min": 1,
+          "max": 240,
+          "step": 1
+        }
+      },
+      "forget_threshold": {
+        "description": "遗忘阈值",
+        "type": "float",
+        "hint": "流水账里保持率低于这个值就忘掉，默认 0.25。遗忘前先写进 graveyard/forgotten.jsonl 台账，可回溯。",
+        "default": 0.25,
+        "slider": {
+          "min": 0,
+          "max": 1,
+          "step": 0.05
+        }
+      },
+      "l2_keep_max": {
+        "description": "每轮最多沉淀几条",
+        "type": "int",
+        "hint": "一次整理里，L1 里最多挑几条进 L2，其余落流水账（不丢，只是不再常驻上下文）。默认 10。",
+        "default": 10,
+        "slider": {
+          "min": 1,
+          "max": 100,
+          "step": 1
+        }
+      },
+      "summary_chunk": {
+        "description": "摘要分片（条）",
+        "type": "int",
+        "hint": "一次送给摘要模型多少条，默认 60。太大容易超上下文（10 万条会打出百万 token 直接 400），太小则摘要碎片化。某片失败只损失那一片，原文走流水账。",
+        "default": 60,
+        "slider": {
+          "min": 10,
+          "max": 300,
+          "step": 10
+        }
+      }
+    }
+  },
+  "semantic": {
+    "description": "向量 / 语义检索",
+    "type": "object",
+    "hint": "和另一端共用 vectors/ 下的向量库。嵌入模型必须两端一致（默认 BAAI/bge-m3），签名对不上时只读不写，绝不会把对方的向量库搞废。",
+    "items": {
+      "embed_model": {
+        "description": "嵌入模型（留空自动取）",
+        "type": "string",
+        "hint": "留空 = 用 astrbot 里配置的 embedding provider 的模型名。必须和另一端的签名一致（api:BAAI/bge-m3），填错会让向量空间不兼容。",
+        "default": ""
+      },
+      "embed_chunk": {
+        "description": "嵌入分批（条）",
+        "type": "int",
+        "hint": "每批送多少条去算向量，默认 32。失败粒度就是这个批次，批内失败记 MODEL_FAIL，不影响其它批次。",
+        "default": 32,
+        "slider": {
+          "min": 8,
+          "max": 128,
+          "step": 8
+        }
+      },
+      "semantic_inject": {
+        "description": "注入时带相关旧事",
+        "type": "bool",
+        "hint": "开启后每轮用你这句话做一次语义检索，命中的旧记忆拼成「## 相关的旧事」附在注入块末尾。代价是每轮多一次 embedding 调用。默认关。",
+        "default": false
+      },
+      "semantic_top_k": {
+        "description": "检索条数",
+        "type": "int",
+        "hint": "语义注入最多带几条旧事。默认 5。",
+        "default": 5,
+        "slider": {
+          "min": 1,
+          "max": 30,
+          "step": 1
+        }
+      },
+      "semantic_min_sim": {
+        "description": "相似度下限",
+        "type": "float",
+        "hint": "低于这个余弦值就不算命中，默认 0.35。调低会带来弱相关噪音，调高可能搜不到。",
+        "default": 0.35,
+        "slider": {
+          "min": 0,
+          "max": 1,
+          "step": 0.01
+        }
+      }
+    }
+  },
+  "advanced": {
+    "description": "高级",
+    "type": "object",
+    "hint": "平时不用动。",
+    "items": {
+      "warn_layer_items": {
+        "description": "层容量告警（条）",
+        "type": "int",
+        "hint": "某一层条目数超过这个值就在日志里告警一次，默认 200000。防止整理卡住时文件无声涨到几个 G。",
+        "default": 200000,
+        "slider": {
+          "min": 1000,
+          "max": 1000000,
+          "step": 1000
+        }
+      },
+      "debug": {
+        "description": "调试日志",
+        "type": "bool",
+        "hint": "打开后每次注入 / 落盘都会在插件日志里打一行。",
+        "default": false
+      }
+    }
+  }
+}
